@@ -1,77 +1,166 @@
 # Kod İnceleme Skill
 
-## Açıklama
-Bu skill, kod incelemesi yapmak ve kod kalitesi analizi için kullanılır. Kod incelemesi sürecinde detaylı analiz, hata tespiti ve iyileştirme önerileri sağlar.
+## Genel Tanım
+Bu skill, AI ajanları tarafından kod kalitesi, güvenlik ve okunabilirlik açısından kapsamlı kod incelemesi yapmak için kullanılır. Verilen kod parçacıklarını analiz ederek detaylı raporlar üretir.
 
-## Amaç
-- Kod kalitesini değerlendirmek
-- Potansiyel hataları ve güvenlik açıklarını tespit etmek
-- Best practice ve standartlara uygunluğu kontrol etmek
-- Performans sorunlarını analiz etmek
-- Bakım kolaylığı ve sürdürülebilirlik açısından değerlendirme yapmak
+## Amaç ve Sorumluluk
+- Sunulan kodun hata, güvenlik ve okunabilirlik açısından detaylı incelemesini yapmak
+- Potansiyel sorunları belirleyip çözüm önerileri sunmak
+- Kod kalitesi metriklerini değerlendirmek
+- Best practices ve endüstri standartlarına uygunluğu kontrol etmek
+- Yapıcı ve uygulanabilir geri bildirim sağlamak
 
-## Temel Fonksiyonlar
+## Girdi (Input)
+- Kod dosyası veya kod parçacığı
+- Programlama dili
+- Proje bağlamı (varsa)
+- İnceleme odakları (tümü veya seçili)
 
-### 1. Statik Kod Analizi
-- Kod yapısı ve karmaşıklık kontrolü
-- Değişken ve fonksiyon isimlendirme standartları
-- Gereksiz/ölü kod tespiti
+## Çıktı Formatı (Output Structure)
 
-### 2. Hata ve Güvenlik İncelemesi
-- Potansiyel hata noktaları
-- Input validation eksikleri
-- Güvenlik açıkları
-- Kimlik doğrulama ve yetkilendirme kontrolü
+Kod incelemesi raporu aşağıdaki yapıda sunulmalıdır:
 
-### 3. Performans Değerlendirmesi
-- Algoritma verimliliği
-- Zaman ve bellek kullanımı
-- Optimizasyon önerileri
+### 1. **ÖZET (Summary)**
+   - Genel değerlendirme (✓/⚠/✗)
+   - Kodun genel durumu
+   - Ana bulgular (3-5 madde)
 
-### 4. Yazılım Kalitesi Kontrolü
-- SOLID prensiplerine uygunluk
-- DRY prensibi kontrolü
-- Kod tekrarının azaltılması
-- Tasarım ve mimari değerlendirme
+### 2. **GÜVENLIK ANALİZİ (Security Analysis)**
+   - SQL Injection riski
+   - XSS/CSRF zafiyetleri
+   - Kimlik doğrulama/yetkilendirme kontrol
+   - Hassas veri işleme
+   - Dependency güvenliği
+   - Risk seviyesi: KRITIK / YÜKSEK / ORTA / DÜŞÜK
 
-### 5. Dokümantasyon ve Okunabilirlik
-- Kodun anlaşılabilirliği
-- Yorum ve açıklama kalitesi
-- README ve API dokümantasyonu kontrolü
+### 3. **HATA VE SORUNLAR (Bugs & Issues)**
+   - Mantık hataları
+   - Null pointer/undefined kontrol eksikleri
+   - Exception handling eksikleri
+   - Resource leak riski
+   - Her sorun için: Satır numarası, açıklama, etki
 
-## Kullanım Amacı
-Bu skill, bir kod tabanının incelenmesi sırasında şu sonuçları üretir:
-- Genel değerlendirme özeti
-- Olumlu yönler
-- Geliştirilmesi gereken noktalar
-- Risk analizi
-- Uygulanabilir iyileştirme önerileri
+### 4. **KOD KALİTESİ (Code Quality)**
+   - Karmaşıklık analizi (Cyclomatic Complexity)
+   - Kod tekrarı (DRY)
+   - SOLID prensiplerine uygunluk
+   - Isimlendirme (Naming Conventions)
+   - Fonksiyon/Method uzunluğu
+   - Nested bloklara derinlik
 
-## Çıktı Formatı
-Kod inceleme raporu genellikle şu bölümlerden oluşur:
-1. Özet
-2. Güçlü Yönler
-3. Hatalar ve Riskler
-4. İyileştirme Önerileri
-5. Güvenlik ve Performans Notları
-6. Sonuç
+### 5. **PERFORMANS (Performance)**
+   - Algoritma verimliliği (Time/Space Complexity)
+   - Döngü ve sorgu optimizasyonu
+   - Bellek yönetimi
+   - Gereksiz işlemler
+   - Önerilen optimizasyonlar
 
-## Desteklenen Teknolojiler
-- JavaScript / TypeScript
-- Python
-- Java
-- C#
+### 6. **OKUNABİLİRLİK VE DOKÜMANTASYON (Readability & Documentation)**
+   - Yorum kalitesi ve yeterliliği
+   - Docstring/JSDoc eksikleri
+   - Kodu anlama kolaylığı
+   - Fonksiyon amacının açıklığı
+   - Değişken isimleri
+
+### 7. **OLUMLU YÖNLER (Strengths)**
+   - İyi uygulanmış kısımlar
+   - Takdir edilecek patterns
+   - Başarılı çözümler
+
+### 8. **İYİLEŞTİRME ÖNERİLERİ (Recommendations)**
+   - Öncelik sırasına göre sıralanmış
+   - Her öneri için: Sebep, çözüm, örnek kod (varsa)
+   - Aciliyet seviyeleri: HEMEN / KISA VADEDE / UZUN VADEDE
+
+### 9. **SES BAĞLAMLAŞTIRMASI (Context & Notes)**
+   - Proje türüne göre değerlendirme
+   - Legacy kod varsayımı
+   - Version/Framework uyumluluğu
+
+### 10. **PUANLAMA (Scoring)**
+   - Güvenlik: X/10
+   - Performans: X/10
+   - Okunabilirlik: X/10
+   - Maintainability: X/10
+   - **Genel Puan: X/10**
+
+## İnceleme Kriterleri
+
+### Güvenlik Kontrolü
+- [ ] Input validation
+- [ ] SQL/NoSQL injection kontrol
+- [ ] Cross-site scripting (XSS) kontrol
+- [ ] CSRF koruma
+- [ ] Authentication/Authorization
+- [ ] Cryptography doğruluğu
+- [ ] Sensitive data exposure
+- [ ] Dependency vulnerabilities
+
+### Kod Kalitesi
+- [ ] Tekrarlayan kod
+- [ ] Çok uzun fonksiyonlar/classlar
+- [ ] Deeply nested kodlar
+- [ ] Dead code
+- [ ] Magic numbers/strings
+- [ ] Inconsistent naming
+- [ ] God objects/classes
+- [ ] Circular dependencies
+
+### Performans
+- [ ] N+1 queries
+- [ ] Unnecessary data fetches
+- [ ] Inefficient algorithms
+- [ ] Memory leaks
+- [ ] Blocking operations
+- [ ] Caching opportunities
+
+### Maintainability
+- [ ] Test coverage
+- [ ] Documentation
+- [ ] Code comments
+- [ ] Error handling
+- [ ] Logging
+- [ ] Configuration management
+
+## Desteklenen Diller
+- Python (Django, Flask, FastAPI)
+- JavaScript/TypeScript (Node.js, React, Vue, Angular)
+- Java (Spring, Hibernate)
+- C# (.NET, ASP.NET)
 - Go
 - Rust
-- PHP
-- Ruby
+- PHP (Laravel, Symfony)
+- Ruby (Rails)
+- SQL (MySQL, PostgreSQL, MongoDB)
 
-## Notlar
-- Kod incelemesi bağlam ve proje hedefleri açısından yapılmalıdır.
-- Öneriler yapıcı ve uygulanabilir olmalıdır.
-- Kod kalitesi, güvenlik ve sürdürülebilirlik birlikte değerlendirilmelidir.
+## Özel İşlem Kuralları
+
+### 1. Bağlam-Duyarlılık
+- Legacy kodlar için farklı standartlar uygula
+- Proje büyüklüğüne göre beklentileri ayarla
+- Framework'e özel best practices dikkate al
+
+### 2. Yapıcı Geri Bildirim
+- Negatif bulguları objektif sunun
+- Çözüm önerileri her zaman ekleyin
+- Başarıları da takdir edin
+- Aşırı kritik olmayın
+
+### 3. Örnek Kod
+- Yanlış kod ve doğru kod karşılaştırmasını yap
+- Diff format tercih et
+- Minimal ve çalışan örnekler sun
+
+### 4. Prioritizasyon
+- Güvenlik sorunlarını öncelik ver
+- Kritik hatalardan başla
+- İyileştirme önerilerini aciliyete göre sırala
+
+## Versiyon
+**1.0** - AI Kod İnceleme Ajanı için Profesyonel Skill Tanımı
 
 ---
 
-Skill adı: kod-inceleme-skill
-Versiyon: 1.0
+**Skill Name**: kod-inceleme-skill  
+**Description**: Kodu hata, güvenlik ve okunabilirlik açısından inceleyen AI kod inceleme aracı.  
+**Last Updated**: 2026-10-09
